@@ -8,8 +8,12 @@ DicomPro is a Python-based tool for processing DICOM (Digital Imaging and Commun
 
 2. Clone this repository:
 
-3. Install the required package:
+3. Install the required packages:
 pip install pydicom
+pip install numpy
+pip install pillow
+pip install pydicom
+pip install pylibjpeg pylibjpeg-openjpeg 
 ## Configuration
 
 Before running the program, make sure to update the following variables in the main script:
