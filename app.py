@@ -5,18 +5,22 @@ from io import BytesIO
 import zipfile
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
-import sys
-import pydicom
+
 
 from dicom_processor import process_dicom
 
 app = Flask(__name__)
-CORS(app)
+#TODO
+#DELETE FOR PRODUCTION. TESTING ONLY
+CORS(app, resources={r"/*": {"origins": "*"}})
+#CORS(app)
 
 ALLOWED_EXTENSIONS = {'dcm'}
 
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route('/upload', methods=['POST'])
 def upload_files():
@@ -63,6 +67,7 @@ def upload_files():
     except Exception as e:
         print(f"Error in upload_files: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
