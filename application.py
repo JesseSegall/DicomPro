@@ -10,7 +10,16 @@ from dicom_processor import process_dicom
 application = Flask(__name__)
 #TODO
 
-CORS(application, resources={r"/*": {"origins": ["http://localhost:5173", "https://dicompro.vercel.app/","https://dicompro-jesses-projects-e8997ad4.vercel.app/"]}})
+CORS(application, resources={r"/*": {
+    "origins": [
+        "http://localhost:5173",
+        "https://dicompro.vercel.app",
+        "https://dicompro-jesses-projects-e8997ad4.vercel.app",
+        "https://api-dicompro.com"
+    ],
+    "methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"]
+}})
 #CORS(application)
 
 ALLOWED_EXTENSIONS = {'dcm'}
